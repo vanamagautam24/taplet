@@ -6,7 +6,7 @@
   --input: #fffaf2;
   --edge: #dacbb5;
   --text: #25334e;
-  --muted: #77786f;
+  --muted: #626b68;
   --accent: #297b7d;
   --accent-soft: #e0ece5;
   --purple: #25334e;
@@ -14,7 +14,7 @@
   --shadow: #3c342914;
   --grid: #d8c5a34a;
   font:
-    14px/1.5 "Segoe UI",
+    16px/1.5 "Segoe UI",
     system-ui,
     -apple-system,
     sans-serif;
@@ -49,6 +49,7 @@ textarea {
   font: inherit;
 }
 button {
+  min-height: 40px;
   cursor: pointer;
   border: 1px solid var(--edge);
   border-radius: 7px;
@@ -122,7 +123,7 @@ input[type="checkbox"] {
 label {
   display: block;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 16px;
 }
 label input {
   display: block;
@@ -130,7 +131,7 @@ label input {
 }
 .app {
   display: grid;
-  grid-template-columns: 212px minmax(0, 1fr);
+  grid-template-columns: 248px minmax(0, 1fr);
   min-height: 100vh;
 }
 .sidebar {
@@ -148,7 +149,7 @@ label input {
   align-items: center;
   gap: 9px;
   color: var(--text);
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 750;
   letter-spacing: 1.2px;
   text-decoration: none;
@@ -159,7 +160,7 @@ label input {
 }
 .brand small {
   display: block;
-  font-size: 8px;
+  font-size: 13px;
   letter-spacing: 1.6px;
   font-weight: 500;
   margin-top: 3px;
@@ -172,7 +173,7 @@ label input {
   margin-top: 38px;
   margin-bottom: 12px;
   font:
-    10px ui-monospace,
+    14px ui-monospace,
     monospace;
   letter-spacing: 1px;
   color: var(--muted);
@@ -188,12 +189,12 @@ label input {
 }
 .icon-button {
   padding: 3px 9px;
-  font-size: 23px;
+  font-size: 26px;
   background: var(--panel);
 }
 .search {
   margin-bottom: 15px;
-  font-size: 12px !important;
+  font-size: 16px !important;
 }
 nav {
   overflow: auto;
@@ -209,7 +210,7 @@ nav button {
   padding: 12px 10px;
   overflow-wrap: anywhere;
   border-color: transparent;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 600;
 }
 nav button[aria-current="true"] {
@@ -222,7 +223,7 @@ nav small {
   margin-top: 5px;
   color: var(--accent);
   font:
-    12px ui-monospace,
+    16px ui-monospace,
     monospace;
 }
 .backup-tools {
@@ -234,18 +235,18 @@ nav small {
   gap: 4px;
 }
 .backup-tools button {
-  font-size: 11px;
+  font-size: 15px;
 }
 .sidebar-bottom {
   padding-top: 18px;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 14px;
 }
 .sidebar-bottom small {
   display: block;
   padding-left: 12px;
   margin-top: 3px;
-  font-size: 9px;
+  font-size: 13px;
 }
 .local-dot {
   display: inline-block;
@@ -273,20 +274,20 @@ main {
 }
 .eyebrow {
   font:
-    9px ui-monospace,
+    13px ui-monospace,
     monospace;
   letter-spacing: 1.6px;
   color: var(--muted);
 }
 h1 {
-  font-size: 30px;
+  font-size: 34px;
   font-weight: 650;
   line-height: 1.2;
   letter-spacing: -1px;
   margin: 6px 0 0;
 }
 h2 {
-  font-size: 14px;
+  font-size: 18px;
   letter-spacing: 0.1px;
   font-weight: 700;
   margin: 0;
@@ -302,7 +303,7 @@ p {
 }
 .library-count {
   font:
-    10px ui-monospace,
+    14px ui-monospace,
     monospace;
   color: var(--muted);
   white-space: nowrap;
@@ -316,14 +317,14 @@ p {
   align-items: center;
   gap: 7px;
   white-space: nowrap;
-  font-size: 11px;
+  font-size: 15px;
 }
 .toggle input {
   margin: 0;
 }
 .workbench {
   display: grid;
-  grid-template-columns: minmax(340px, 1fr) minmax(340px, 390px);
+  grid-template-columns: minmax(320px, 1fr) minmax(390px, 440px);
   gap: 22px;
   margin-top: 22px;
 }
@@ -344,7 +345,7 @@ p {
 }
 .stage-heading h2 {
   margin-top: 5px;
-  font-size: 17px;
+  font-size: 20px;
   font-weight: 650;
   letter-spacing: -0.4px;
 }
@@ -356,14 +357,14 @@ p {
   border-radius: 4px;
   padding: 3px 6px;
   font:
-    8px ui-monospace,
+    13px ui-monospace,
     monospace;
   letter-spacing: 0.6px;
   color: var(--accent);
 }
 .board {
   position: relative;
-  height: 480px;
+  height: 570px;
   margin: 10px -8px 0;
   background-image: linear-gradient(
       30deg,
@@ -413,6 +414,7 @@ p {
   stroke: var(--edge);
 }
 .callout {
+  width: 44%;
   position: absolute;
   display: flex;
   gap: 9px;
@@ -421,19 +423,19 @@ p {
   padding: 12px;
   background: var(--input);
   box-shadow: 0 4px 12px var(--shadow);
-  font-size: 11px;
+  font-size: 15px;
   z-index: 2;
 }
 .callout strong {
   font:
-    10px ui-monospace,
+    14px ui-monospace,
     monospace;
   letter-spacing: 0.2px;
 }
 .callout small {
   display: block;
   color: var(--muted);
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1.6;
   margin-top: 4px;
 }
@@ -448,7 +450,7 @@ p {
 }
 .text-callout {
   right: 3%;
-  top: 16%;
+  top: 6%;
 }
 .step-number {
   display: inline-flex;
@@ -460,7 +462,7 @@ p {
   justify-content: center;
   color: var(--accent);
   font:
-    9px ui-monospace,
+    13px ui-monospace,
     monospace;
   flex: none;
 }
@@ -493,7 +495,7 @@ p {
 }
 .keycap > span {
   font:
-    700 27px ui-monospace,
+    700 30px ui-monospace,
     monospace;
   max-width: 135px;
   overflow: hidden;
@@ -501,7 +503,7 @@ p {
 }
 .keycap > small {
   font:
-    7px ui-monospace,
+    11px ui-monospace,
     monospace;
   letter-spacing: 2px;
   margin-top: 10px;
@@ -533,13 +535,13 @@ p {
 }
 .engine-chip > span:not(.chip-led) {
   font:
-    700 17px ui-monospace,
+    700 19px ui-monospace,
     monospace;
   letter-spacing: 1.5px;
 }
 .engine-chip > small {
   font:
-    5px ui-monospace,
+    10px ui-monospace,
     monospace;
   letter-spacing: 1px;
   margin-top: 4px;
@@ -573,7 +575,7 @@ p {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 650;
   letter-spacing: 0.3px;
 }
@@ -587,22 +589,23 @@ p {
   letter-spacing: 2px;
 }
 .output-card p {
-  font-size: 11px;
+  font-size: 15px;
   line-height: 1.65;
   white-space: pre-wrap;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
   overflow: hidden;
-  max-height: 55px;
+  max-height: 80px;
   margin: 9px 0 10px;
 }
 .output-meta {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 8px;
   font:
-    7px ui-monospace,
+    11px ui-monospace,
     monospace;
   color: var(--muted);
   border-top: 1px solid var(--edge);
@@ -612,16 +615,16 @@ p {
   color: var(--accent);
 }
 .board-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  position: static;
+  min-height: 42px;
+  margin-top: 16px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0;
   color: var(--muted);
-  font-size: 9px;
+  font-size: 13px;
   text-align: center;
   padding: 0 10px;
 }
@@ -629,10 +632,11 @@ p {
   display: flex;
   justify-content: center;
   gap: 9px;
-  padding: 19px 0 22px;
+  padding: 12px 0 22px;
+  flex-wrap: wrap;
 }
 .stage-controls button {
-  font-size: 11px;
+  font-size: 15px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -655,12 +659,12 @@ p {
   background: transparent;
   color: #a85749;
   border-color: transparent;
-  font-size: 10px;
+  font-size: 14px;
 }
 .text-button {
   background: transparent;
   border-color: transparent;
-  font-size: 10px;
+  font-size: 14px;
   color: var(--muted);
   padding: 5px 7px;
 }
@@ -676,12 +680,12 @@ p {
   margin-bottom: 11px;
 }
 .starter-heading > span:last-child {
-  font-size: 9px;
+  font-size: 13px;
   color: var(--muted);
 }
 .starters {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 8px;
 }
 .starter {
@@ -700,17 +704,17 @@ p {
 }
 .starter strong {
   display: block;
-  font-size: 9px;
+  font-size: 13px;
   font-weight: 650;
 }
 .starter small {
   display: block;
-  font-size: 8px;
+  font-size: 13px;
   color: var(--muted);
   margin-top: 3px;
 }
 .starter > span:last-child {
-  font-size: 10px;
+  font-size: 14px;
   margin-left: auto;
   color: var(--accent);
 }
@@ -748,14 +752,15 @@ p {
 }
 .body-label span {
   color: var(--muted);
-  font-size: 9px;
+  font-size: 13px;
 }
 #body {
-  font-size: 12px;
-  min-height: 190px;
+  font-size: 16px;
+  min-height: 230px;
 }
 .editor-footer {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   gap: 8px;
@@ -766,7 +771,7 @@ p {
   align-items: center;
   gap: 5px;
   white-space: nowrap;
-  font-size: 10px;
+  font-size: 14px;
 }
 .checkbox input {
   margin: 0;
@@ -780,14 +785,14 @@ p {
 }
 .actions button {
   padding: 6px 8px;
-  font-size: 10px;
+  font-size: 14px;
 }
 .actions .icon {
   width: 12px;
   height: 12px;
 }
 .hint {
-  font-size: 9px;
+  font-size: 13px;
   line-height: 1.6;
   color: var(--muted);
   margin-top: 13px;
@@ -801,26 +806,27 @@ p {
   align-items: center;
 }
 .practice p {
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1.6;
 }
 .practice textarea {
   margin-top: 4px;
-  font-size: 12px;
-  min-height: 105px;
+  font-size: 16px;
+  min-height: 150px;
 }
 .practice-foot {
   display: flex;
   justify-content: space-between;
   gap: 8px;
+  flex-wrap: wrap;
   margin-top: 9px;
-  font-size: 8px;
+  font-size: 13px;
   color: var(--muted);
 }
 .undo-key {
   white-space: nowrap;
   font:
-    8px ui-monospace,
+    13px ui-monospace,
     monospace;
 }
 .inspector-note {
@@ -835,7 +841,7 @@ p {
   height: 17px;
 }
 .inspector-note p {
-  font-size: 9px;
+  font-size: 13px;
   line-height: 1.7;
 }
 footer {
@@ -845,18 +851,18 @@ footer {
   flex-wrap: wrap;
   gap: 10px;
   color: var(--muted);
-  font-size: 9px;
+  font-size: 13px;
   padding-top: 18px;
 }
 #status {
   color: var(--accent);
-  font-size: 10px;
+  font-size: 14px;
 }
 #status.error {
   color: #bc6057;
 }
 .empty {
-  font-size: 11px;
+  font-size: 15px;
   color: var(--muted);
   padding: 10px;
 }
@@ -882,7 +888,7 @@ footer {
   outline-offset: 7px;
 }
 .popup {
-  width: 310px;
+  width: 340px;
   padding: 22px;
   background: var(--panel);
 }
@@ -902,13 +908,94 @@ footer {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  font-size: 12px;
+  font-size: 16px;
 }
 .quick-snippet code {
   color: var(--accent);
 }
 .popup .hint {
-  font-size: 11px;
+  font-size: 15px;
+}
+.practice-ready {
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 5px var(--accent-soft);
+  scroll-margin-block: 24px;
+}
+.practice-ready #practice-hint,
+.practice-ready #practice-result {
+  color: var(--accent);
+  font-weight: 600;
+}
+.preview-dialog {
+  width: min(780px, calc(100vw - 32px));
+  max-height: calc(100dvh - 48px);
+  padding: 26px;
+  border: 1px solid var(--edge);
+  border-radius: 14px;
+  background: var(--panel);
+  color: var(--text);
+  box-shadow: 0 24px 90px #0005;
+}
+.preview-dialog::backdrop {
+  background: #14202c99;
+}
+.preview-heading,
+.preview-summary,
+.preview-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.preview-heading h2 {
+  margin-top: 6px;
+  font-size: 24px;
+}
+.preview-heading .icon-button {
+  width: 44px;
+  height: 44px;
+}
+.preview-summary {
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 15px;
+}
+#preview-shortcut {
+  padding: 7px 12px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-radius: 6px;
+  font-size: 17px;
+}
+#preview-note {
+  font-size: 15px;
+  margin-block: 16px;
+}
+#preview-text {
+  max-height: 50dvh;
+  overflow: auto;
+  padding: 20px;
+  border: 1px solid var(--edge);
+  border-radius: 8px;
+  background: var(--input);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font:
+    17px/1.7 "Segoe UI",
+    system-ui,
+    sans-serif;
+}
+.preview-actions {
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.load-error {
+  border: 1px solid #bc6057;
+  padding: 16px;
+  background: var(--panel);
+  color: var(--text);
+  font-size: 16px;
 }
 @keyframes signal-flow {
   to {
@@ -943,7 +1030,7 @@ footer {
   }
   .output-card p {
     -webkit-line-clamp: 4;
-    max-height: 75px;
+    max-height: 80px;
   }
   .keycap {
     left: 19%;
@@ -951,18 +1038,18 @@ footer {
   }
   .text-callout {
     right: 9%;
-    top: 18%;
+    top: 6%;
   }
 }
 @media (max-width: 1190px) {
   .app {
-    grid-template-columns: 178px minmax(0, 1fr);
+    grid-template-columns: 200px minmax(0, 1fr);
   }
   .sidebar {
     padding: 23px 11px;
   }
   .brand {
-    font-size: 13px;
+    font-size: 16px;
     gap: 6px;
   }
   .brand img {
@@ -970,20 +1057,20 @@ footer {
     height: 29px;
   }
   .brand small {
-    font-size: 6px;
+    font-size: 12px;
   }
   main {
     padding: 23px 18px 14px;
   }
   .workbench {
     gap: 14px;
-    grid-template-columns: minmax(300px, 1fr) 340px;
+    grid-template-columns: minmax(300px, 1fr) 390px;
   }
   .stage {
     padding: 15px 12px;
   }
   .board {
-    height: 475px;
+    height: 570px;
   }
   .keycap {
     width: 130px;
@@ -994,14 +1081,14 @@ footer {
     gap: 6px;
   }
   .callout strong {
-    font-size: 9px;
+    font-size: 13px;
   }
   .callout small {
-    font-size: 9px;
+    font-size: 13px;
   }
   .text-callout {
     right: 0;
-    top: 14%;
+    top: 6%;
   }
   .trigger-callout {
     left: 0;
@@ -1016,24 +1103,24 @@ footer {
     padding: 9px 6px;
   }
   .starter strong {
-    font-size: 8px;
+    font-size: 13px;
   }
   .starter small {
-    font-size: 7px;
+    font-size: 12px;
   }
   .library-count {
     display: none;
   }
   .stage-heading h2 {
-    font-size: 15px;
+    font-size: 18px;
   }
 }
-@media (max-width: 970px) {
+@media (max-width: 1080px) {
   .workbench {
     grid-template-columns: minmax(0, 1fr);
   }
   .board {
-    height: 460px;
+    height: 570px;
     max-width: 700px;
     margin: auto;
   }
@@ -1041,14 +1128,10 @@ footer {
     width: 100%;
   }
   .inspector {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 14px;
-    align-items: start;
+    display: block;
   }
   .inspector-note {
-    grid-column: 2;
-    margin-top: -70px;
+    margin-top: 0;
   }
   .starters {
     gap: 10px;
@@ -1057,10 +1140,10 @@ footer {
     display: block;
   }
   .starter strong {
-    font-size: 10px;
+    font-size: 14px;
   }
   .starter small {
-    font-size: 9px;
+    font-size: 13px;
   }
   .starter {
     padding: 13px 11px;
@@ -1097,10 +1180,10 @@ footer {
     border-bottom: 1px solid var(--edge);
   }
   .brand {
-    font-size: 17px;
+    font-size: 20px;
   }
   .brand small {
-    font-size: 7px;
+    font-size: 12px;
   }
   .brand img {
     width: 35px;
@@ -1148,7 +1231,7 @@ footer {
     margin-right: auto;
   }
   h1 {
-    font-size: 29px;
+    font-size: 32px;
   }
   .inspector {
     display: block;
@@ -1157,16 +1240,16 @@ footer {
     margin-top: 0;
   }
   .board {
-    height: 435px;
+    height: 560px;
   }
   .keycap {
     left: 9%;
-    top: 32%;
+    top: 35%;
     width: 123px;
     height: 88px;
   }
   .keycap > span {
-    font-size: 23px;
+    font-size: 26px;
     max-width: 110px;
   }
   .engine-chip {
@@ -1180,16 +1263,16 @@ footer {
   }
   .text-callout {
     right: 0;
-    top: 17%;
+    top: 6%;
   }
   .callout .icon {
     display: none;
   }
   .callout small {
-    font-size: 9px;
+    font-size: 13px;
   }
   .callout strong {
-    font-size: 8px;
+    font-size: 13px;
   }
   .callout {
     padding: 9px 7px;
@@ -1201,12 +1284,11 @@ footer {
     padding: 11px;
   }
   .output-card p {
-    font-size: 10px;
-    max-height: 48px;
+    font-size: 14px;
+    max-height: 80px;
   }
   .board-caption {
-    font-size: 8px;
-    bottom: -4px;
+    font-size: 13px;
   }
   .starter-heading {
     flex-direction: column;
@@ -1223,16 +1305,16 @@ footer {
     padding: 10px 6px;
   }
   .starter strong {
-    font-size: 8px;
+    font-size: 13px;
   }
   .starter small {
-    font-size: 7px;
+    font-size: 12px;
   }
   .stage-heading .badge {
     display: none;
   }
   .stage-controls button {
-    font-size: 10px;
+    font-size: 14px;
     padding: 8px;
   }
   .card {
@@ -1242,19 +1324,19 @@ footer {
     grid-template-columns: minmax(0, 1fr) 110px;
   }
   .editor-footer {
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
   }
   .actions button {
     padding: 7px;
   }
   .practice-foot {
-    font-size: 9px;
+    font-size: 13px;
   }
   .undo-key {
-    font-size: 8px;
+    font-size: 13px;
   }
   .hint {
-    font-size: 10px;
+    font-size: 14px;
   }
 }
 @media (prefers-reduced-motion: reduce) {

@@ -38,8 +38,58 @@
     }, 2200);
   }
   function focus(id) {
-    $(id).focus();
-    $(id).scrollIntoView({ block: "nearest" });
+    $(id).focus({ preventScroll: true });
+    $(id).scrollIntoView({ block: "center", behavior: "auto" });
+  }
+  function startPractice() {
+    const snippet = data.snippets.find((s) => s.id === selected);
+    if (!snippet) {
+      status("Save your shortcut before trying it.", true);
+      focus("save");
+      return;
+    }
+    if (!data.enabled) {
+      status("Expansion is paused. Turn it on to try your shortcut.", true);
+      focus("enabled");
+      return;
+    }
+    if (!snippet.enabled) {
+      status("Enable this shortcut and save it before trying it.", true);
+      focus("snippet-enabled");
+      return;
+    }
+    $("practice-card").classList.add("practice-ready");
+    $("practice-hint").textContent = dirty
+      ? `Type ${snippet.shortcut} to try your saved version. Save your edits to test the changes.`
+      : `Type ${snippet.shortcut} here. Your full text appears when you finish the shortcut.`;
+    $("practice-result").textContent =
+      `Ready — type ${snippet.shortcut}. Nothing is sent or saved.`;
+    focus("practice");
+    // Preserve the practice text until the user chooses to type over it.
+    $("practice").select();
+    status(
+      `Practice is ready. Type ${snippet.shortcut} in the highlighted box.`,
+    );
+  }
+  function showPreview() {
+    const body = $("body").value;
+    if (!body) {
+      status("Add some expansion text first.", true);
+      focus("body");
+      return;
+    }
+    $("preview-title").textContent = $("name").value || "Your full thought";
+    $("preview-shortcut").textContent = $("shortcut").value || "Your shortcut";
+    $("preview-count").textContent =
+      `${body.length.toLocaleString()} characters`;
+    $("preview-note").textContent = dirty
+      ? "This previews your unsaved edits. Save before testing the updated shortcut."
+      : "This is the full text your shortcut inserts.";
+    $("preview-text").textContent = body;
+    if (!$("preview-dialog").open) $("preview-dialog").showModal();
+    animate(
+      `${$("shortcut").value || "Your shortcut"} → ${body.length.toLocaleString()} characters.`,
+    );
   }
   function wires() {
     const board = $("board"),
@@ -136,7 +186,7 @@
         $(id).addEventListener("click", () => focus("shortcut"));
       $("text-focus").addEventListener("click", () => focus("body"));
       for (const id of ["engine-focus", "practice-focus"])
-        $(id).addEventListener("click", () => focus("practice"));
+        $(id).addEventListener("click", startPractice);
       for (const [id, name] of [
         ["shortcut", "trigger"],
         ["body", "text"],
@@ -148,15 +198,12 @@
           $("board").classList.remove(`highlight-${name}`),
         );
       }
-      $("demo").addEventListener("click", () => {
-        if (!$("body").value) {
-          status("Add some expansion text first.", true);
-          focus("body");
-          return;
-        }
-        animate(
-          `${$("shortcut").value || "Your shortcut"} → ${$("body").value.length.toLocaleString()} characters. ${dirty ? "Preview only — save to use it." : "Ready when you are."}`,
-        );
+      $("demo").addEventListener("click", showPreview);
+      for (const id of ["preview-close", "preview-done"])
+        $(id).addEventListener("click", () => $("preview-dialog").close());
+      $("preview-try").addEventListener("click", () => {
+        $("preview-dialog").close();
+        requestAnimationFrame(startPractice);
       });
       $("clear-practice").addEventListener("click", () => {
         $("practice").value = "";
@@ -328,8 +375,14 @@
           e.returnValue = "";
         }
       });
+      document.documentElement.dataset.studioReady = "true";
+      document.querySelector("main").setAttribute("aria-busy", "false");
     } catch (e) {
       status(e.message, true);
+      $("load-error").textContent =
+        "The editor could not start. Reload this tab to try again. Your saved snippets have not been changed.";
+      $("load-error").hidden = false;
+      document.querySelector("main").setAttribute("aria-busy", "false");
     }
   });
 })();

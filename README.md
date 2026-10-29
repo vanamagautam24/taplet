@@ -10,7 +10,7 @@ A small, local text expander for **Zen and Firefox**. Type a shortcut such as `/
 
 - Add, edit, search, pause, and delete plain-text snippets.
 - An interactive workbench: click the shortcut key to edit it, click the text callout to edit the expansion, or try typing in the practice box.
-- A live preview, short expansion animations, starter snippets, and paper/dark themes.
+- A full-text preview popup, clear practice-box focus, readable text, starter snippets, and paper/dark themes.
 - Export and import your library as JSON.
 - Local browser storage, with no account, analytics, external API, server, or separate desktop app.
 - No Rust crates, JavaScript packages, or remote fonts are required by the extension.
@@ -53,8 +53,8 @@ bash build.sh
 The script runs native Rust tests, compiles the matcher, runs integration tests against the actual WASM module, and produces:
 
 - `extension/core.wasm`
-- `dist/rust-snips-0.2.0-unsigned.xpi`
-- `dist/rust-snips-0.2.0-source.zip`
+- `dist/rust-snips-0.2.1-unsigned.xpi`
+- `dist/rust-snips-0.2.1-source.zip`
 
 Cargo runs offline once the compiler and target are installed. There are no Cargo dependencies or npm installation steps. JavaScript and CSS are packaged without minification. Extension ZIP entries have a fixed timestamp.
 
@@ -74,7 +74,7 @@ The engine initializes when an eligible text field is focused, then reuses its i
 
 ## Compatibility and limits
 
-The manifest targets Firefox 140+ and Firefox-based Zen releases. Version 0.2.0 was checked in Zen 1.23.4b and Firefox 158.0.1 on Windows. Regular text inputs, textareas, and standard contenteditable editors are supported. Password, OTP, and payment fields identified by input type/autocomplete are excluded, along with read-only and opted-out fields. Pasting does not trigger expansion.
+The manifest targets Firefox 140+ and Firefox-based Zen releases. Version 0.2.1 was checked in Zen 1.23.4b and Firefox 158.0.1 on Windows. Regular text inputs, textareas, and standard contenteditable editors are supported. Password, OTP, and payment fields identified by input type/autocomplete are excluded, along with read-only and opted-out fields. Pasting does not trigger expansion.
 
 This release handles plain-text shortcuts. It does not implement Text Blaze forms, dynamic commands, proprietary backup imports, or system-wide desktop expansion. Browser chrome, privileged pages, canvas editors, closed shadow roots, and every site's custom editor are not supported or guaranteed.
 

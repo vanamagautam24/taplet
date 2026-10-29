@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Rust Snips · Shortcut studio</title>
+    <title>Rust Snips · Shortcut studio 0.2.1</title>
     <link rel="icon" href="icon.svg" />
-    <link rel="stylesheet" href="ui.css" />
+    <link rel="stylesheet" href="ui.css?v=0.2.1" />
   </head>
   <body class="studio-page">
     <svg
@@ -47,7 +47,7 @@
     </svg>
     <div class="app">
       <aside class="sidebar" data-rust-snips="off">
-        <a class="brand" href="options.html"
+        <a class="brand" href="options.html?studio=0.2.1"
           ><img src="icon.svg" alt="" /><span
             >RUST SNIPS<small>YOUR SHORTCUT STUDIO</small></span
           ></a
@@ -89,7 +89,8 @@
           >
         </div>
       </aside>
-      <main>
+      <main aria-busy="true">
+        <p id="load-error" class="load-error" role="alert" hidden></p>
         <header class="studio-header">
           <div>
             <span class="eyebrow">TYPE LESS. MAKE ROOM FOR MORE.</span>
@@ -201,17 +202,27 @@
                   ><span class="preview-label">LIVE PREVIEW</span>
                 </div>
               </div>
-              <div class="board-caption">
-                <span class="local-dot"></span
-                ><span id="board-caption"
-                  >Click a part to explore. Your text stays here.</span
-                >
-              </div>
+            </div>
+            <div class="board-caption">
+              <span class="local-dot"></span
+              ><span id="board-caption"
+                >Click a part to explore. Your text stays here.</span
+              >
             </div>
             <div class="stage-controls">
-              <button id="demo" class="primary">
+              <button
+                id="demo"
+                class="primary"
+                aria-haspopup="dialog"
+                aria-controls="preview-dialog"
+              >
                 <svg class="icon"><use href="#i-play" /></svg> Preview expansion</button
-              ><button id="practice-focus" class="secondary">
+              ><button
+                id="practice-focus"
+                class="secondary"
+                aria-controls="practice"
+                aria-describedby="practice-hint"
+              >
                 Try typing <svg class="icon"><use href="#i-arrow" /></svg>
               </button>
             </div>
@@ -302,9 +313,15 @@
                 text field.
               </p>
             </section>
-            <section class="practice card">
+            <section
+              id="practice-card"
+              class="practice card"
+              aria-labelledby="practice-title"
+            >
               <div class="section-head">
-                <h2><span class="step-number">03</span> Try it yourself</h2>
+                <h2 id="practice-title">
+                  <span class="step-number">03</span> Try it yourself
+                </h2>
                 <button id="clear-practice" class="text-button">Clear</button>
               </div>
               <p id="practice-hint">
@@ -333,15 +350,50 @@
           </aside>
         </div>
         <footer>
-          <span>Made for the little things you type a lot.</span
+          <span
+            >Rust Snips 0.2.1 · Made for the little things you type a lot.</span
           ><span id="status" role="status" aria-live="polite"></span>
         </footer>
       </main>
     </div>
-    <script src="defaults.js"></script>
-    <script src="schema.js"></script>
-    <script src="engine.js"></script>
-    <script src="content.js"></script>
-    <script src="options.js"></script>
+    <dialog
+      id="preview-dialog"
+      class="preview-dialog"
+      aria-labelledby="preview-title"
+      aria-describedby="preview-note"
+      data-rust-snips="off"
+    >
+      <div class="preview-heading">
+        <div>
+          <span class="eyebrow">EXPANSION PREVIEW</span>
+          <h2 id="preview-title">Your full thought</h2>
+        </div>
+        <button
+          id="preview-close"
+          class="icon-button"
+          aria-label="Close preview"
+          autofocus
+        >
+          ×
+        </button>
+      </div>
+      <div class="preview-summary">
+        <code id="preview-shortcut"></code><span id="preview-count"></span>
+      </div>
+      <p id="preview-note"></p>
+      <pre id="preview-text"></pre>
+      <div class="preview-actions">
+        <button id="preview-done" class="secondary">Close</button
+        ><button id="preview-try" class="primary">
+          Try typing this shortcut
+          <svg class="icon"><use href="#i-arrow" /></svg>
+        </button>
+      </div>
+    </dialog>
+    <script src="defaults.js?v=0.2.1"></script>
+    <script src="schema.js?v=0.2.1"></script>
+    <script src="engine.js?v=0.2.1"></script>
+    <script src="content.js?v=0.2.1"></script>
+    <script src="options.js?v=0.2.1"></script>
   </body>
 </html>
