@@ -1,0 +1,12 @@
+/target/
+/dist/
+/extension/core.wasm
+/tests/*.json
+/tests/*.png
+/tests/browser_checks.py
+**/__pycache__/
+*.pyc
+.DS_Store
+node_modules/
+.env*
+!.env.example

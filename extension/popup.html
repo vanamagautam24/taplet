@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Rust Snips</title>
+    <link rel="stylesheet" href="ui.css" />
+  </head>
+  <body class="popup">
+    <div class="brand">
+      <img src="icon.svg" alt="" /><span
+        >Rust Snips<small>Your words, on tap.</small></span
+      >
+    </div>
+    <label class="toggle"
+      ><input id="enabled" type="checkbox" /><span
+        >Expand shortcuts</span
+      ></label
+    >
+    <div id="quick-list"></div>
+    <button class="primary" id="editor">Open snippet editor ↗</button>
+    <p class="hint">
+      Stored locally. Powered by Rust.<br />No separate app needs to run.
+    </p>
+    <p id="status" role="status"></p>
+    <script src="defaults.js"></script>
+    <script src="schema.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>
