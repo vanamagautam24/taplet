@@ -45,8 +45,8 @@ mod tests {
 
     #[test]
     fn expands_at_boundaries_and_keeps_original_index() {
-        let keys = "/hello\n/nba\n;bye";
-        for text in ["/nba", "Hi /nba", "( /nba", "\n/nba", "“hi”\u{2003}/nba"] {
+        let keys = "/hello\n/sample\n;bye";
+        for text in ["/sample", "Hi /sample", "( /sample", "\n/sample", "“hi”\u{2003}/sample"] {
             assert_eq!(match_suffix(text, keys), 1, "{text}");
         }
         assert_eq!(match_suffix(";bye", keys), 2);
@@ -54,8 +54,8 @@ mod tests {
 
     #[test]
     fn does_not_expand_inside_words_urls_or_partial_shortcuts() {
-        for text in ["word/nba", "https://nba", "email@example/nba", "/nb", "/nba ", "/NBA"] {
-            assert_eq!(match_suffix(text, "/nba"), -1, "{text}");
+        for text in ["word/sample", "https://sample", "email@example/sample", "/sam", "/sample ", "/SAMPLE"] {
+            assert_eq!(match_suffix(text, "/sample"), -1, "{text}");
         }
         assert_eq!(match_suffix("", ""), -1);
     }
@@ -64,6 +64,6 @@ mod tests {
     fn handles_unicode_and_chooses_longest_match() {
         assert_eq!(match_suffix("🙂 /你好", "/hello\n/你好"), 1);
         assert_eq!(match_suffix(" /a/b", "/b\n/a/b"), 1);
-        assert_eq!(match_suffix(" /nba", "\n/nba"), 1);
+        assert_eq!(match_suffix(" /sample", "\n/sample"), 1);
     }
 }

@@ -363,6 +363,7 @@ p {
   color: var(--accent);
 }
 .board {
+  perspective: 1100px;
   position: relative;
   height: 570px;
   margin: 10px -8px 0;
@@ -388,8 +389,91 @@ p {
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 0;
+  pointer-events: none;
+  transform: translateZ(0);
   overflow: visible;
+}
+.scene-model {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--model-x, 0deg)) rotateY(var(--model-y, 0deg))
+    scale(var(--model-scale, 1));
+  transform-origin: center;
+  cursor: grab;
+  touch-action: pan-y;
+}
+.scene-model.is-dragging,
+.scene-model.is-dragging * {
+  cursor: grabbing;
+}
+.scene-model.is-dragging {
+  will-change: transform;
+}
+.scene-model:focus-visible {
+  outline: 2px dashed var(--accent);
+  outline-offset: -4px;
+}
+.scene-model .keycap {
+  transform-style: preserve-3d;
+  transform: translateZ(22px) rotateZ(-12deg) skew(5deg);
+}
+.scene-model .keycap:hover {
+  transform: translateZ(25px) rotateZ(-12deg) skew(5deg);
+}
+.scene-model .keycap::after,
+.scene-model .engine-chip::after {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: 100%;
+  width: calc(100% + 2px);
+  height: 13px;
+  background: var(--edge);
+  border: 1px solid var(--text);
+  border-radius: 0 0 5px 5px;
+  transform-origin: top;
+  transform: rotateX(-90deg);
+  pointer-events: none;
+}
+.scene-model .engine-chip {
+  transform-style: preserve-3d;
+  transform: translateZ(26px) rotateZ(-12deg);
+}
+.scene-model .output-card {
+  transform: translateZ(12px) rotateZ(-3deg);
+  cursor: pointer;
+}
+.scene-model .callout {
+  transform: translateZ(18px);
+}
+.scene-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 16px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.scene-controls > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.scene-controls button {
+  font-size: 15px;
+  padding: 7px 12px;
+}
+#scene-zoom-value {
+  min-width: 48px;
+  text-align: center;
+  font:
+    14px ui-monospace,
+    monospace;
 }
 .trace,
 .signal {

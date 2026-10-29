@@ -92,17 +92,24 @@
     );
   }
   function wires() {
-    const board = $("board"),
-      b = board.getBoundingClientRect();
+    const board = $("scene-model"),
+      b = { width: board.clientWidth, height: board.clientHeight };
     if (!b.width || !b.height) return;
-    const key = $("keycap").getBoundingClientRect(),
-      chip = $("engine-focus").getBoundingClientRect(),
-      output = document.querySelector(".output-card").getBoundingClientRect();
+    const rect = (el) => ({
+      left: el.offsetLeft,
+      right: el.offsetLeft + el.offsetWidth,
+      top: el.offsetTop,
+      bottom: el.offsetTop + el.offsetHeight,
+      width: el.offsetWidth,
+    });
+    const key = rect($("keycap")),
+      chip = rect($("engine-focus")),
+      output = rect($("model-output"));
     const points = [
-      [(key.left + key.right) / 2 - b.left, key.bottom - b.top],
-      [chip.left - b.left, (chip.top + chip.bottom) / 2 - b.top],
-      [chip.right - b.left, (chip.top + chip.bottom) / 2 - b.top],
-      [output.left + output.width * 0.65 - b.left, output.top - b.top],
+      [(key.left + key.right) / 2, key.bottom],
+      [chip.left, (chip.top + chip.bottom) / 2],
+      [chip.right, (chip.top + chip.bottom) / 2],
+      [output.left + output.width * 0.65, output.top],
     ];
     const svg = document.querySelector(".board-wires");
     svg.setAttribute("viewBox", `0 0 ${b.width} ${b.height}`);
@@ -182,7 +189,7 @@
           $("name").focus();
         }
       });
-      for (const id of ["keycap", "trigger-focus"])
+      for (const id of ["trigger-focus"])
         $(id).addEventListener("click", () => focus("shortcut"));
       $("text-focus").addEventListener("click", () => focus("body"));
       for (const id of ["engine-focus", "practice-focus"])
@@ -223,7 +230,11 @@
           $("practice-result").textContent = "Nothing here is sent or saved.";
       });
       const templates = {
-        explain: RustSnipsDefaults.snippets[0],
+        hello: {
+          name: "A quick hello",
+          shortcut: "/hello",
+          body: "Hello! Thanks for your message. I'll get back to you soon.",
+        },
         thanks: {
           name: "A thoughtful reply",
           shortcut: "/thanks",
@@ -276,6 +287,15 @@
         }
       });
       new ResizeObserver(wires).observe($("board"));
+      RustSnipsScene({
+        getDraft: () => ({
+          name: $("name").value || "Preview",
+          shortcut: $("shortcut").value,
+          body: $("body").value,
+        }),
+        preview: showPreview,
+        status,
+      });
       $("save").addEventListener("click", async () => {
         try {
           const item = {
@@ -336,7 +356,7 @@
         const url = URL.createObjectURL(blob),
           link = document.createElement("a");
         link.href = url;
-        link.download = "rust-snips-backup.json";
+        link.download = "taplet-backup.json";
         link.click();
         setTimeout(() => URL.revokeObjectURL(url), 1000);
         status("Backup exported. Unsaved edits are excluded.");

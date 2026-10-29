@@ -7,7 +7,7 @@ root = Path(__file__).resolve().parents[1]
 dist = root / 'dist'
 dist.mkdir(exist_ok=True)
 manifest = json.loads((root / 'extension/manifest.json').read_text())
-out = dist / f"rust-snips-{manifest['version']}-unsigned.xpi"
+out = dist / f"taplet-{manifest['version']}-unsigned.xpi"
 
 
 def add_file(archive, name, data):
@@ -22,7 +22,7 @@ with zipfile.ZipFile(out, 'w', zipfile.ZIP_DEFLATED) as z:
         if file.is_file() and not file.name.startswith('.'):
             add_file(z, file.name, file.read_bytes())
     add_file(z, 'LICENSE', (root / 'LICENSE').read_bytes())
-source = dist / f"rust-snips-{manifest['version']}-source.zip"
+source = dist / f"taplet-{manifest['version']}-source.zip"
 with zipfile.ZipFile(source, 'w', zipfile.ZIP_DEFLATED) as z:
     for name in ['Cargo.toml', 'Cargo.lock', 'rust-toolchain.toml', 'README.md', 'PRIVACY.md', 'CONTRIBUTING.md', 'LICENSE', 'build.sh', 'src/lib.rs', 'scripts/package.py', 'tests/core.test.cjs', 'docs/TESTING.md', 'docs/studio.png']:
         add_file(z, name, (root / name).read_bytes())

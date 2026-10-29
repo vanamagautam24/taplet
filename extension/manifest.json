@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Rust Snips",
-  "version": "0.2.1",
+  "name": "Taplet",
+  "version": "0.3.0",
   "description": "Your local text shortcuts, powered by a small Rust engine. No account or background app.",
   "permissions": ["storage"],
   "host_permissions": ["http://*/*", "https://*/*"],
@@ -29,9 +29,9 @@
   ],
   "icons": { "48": "icon.svg", "96": "icon.svg" },
   "action": {
-    "default_title": "Rust Snips",
+    "default_title": "Taplet",
     "default_popup": "popup.html",
     "default_icon": "icon.svg"
   },
-  "options_ui": { "page": "options.html?studio=0.2.1", "open_in_tab": true }
+  "options_ui": { "page": "options.html?studio=0.3.0", "open_in_tab": true }
 }

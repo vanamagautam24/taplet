@@ -1,6 +1,6 @@
 # Privacy
 
-Rust Snips runs inside your browser. It has no account system, analytics, remote API, cloud synchronization, or separate server.
+Taplet runs inside your browser. It has no account system, analytics, remote API, cloud synchronization, or separate server.
 
 The extension stores snippet names, shortcuts, expansion text, the enabled setting, and the selected interface theme in this browser profile's `storage.local`. It does not use `storage.sync`. Exporting a backup writes the snippet library to a JSON file you choose to keep; importing replaces the library after confirmation. The practice field is never saved.
 
@@ -14,6 +14,6 @@ Password fields, one-time-code fields, and payment fields identified by their in
 - **Access to HTTP/HTTPS pages** lets the content script expand shortcuts in editable fields. It does not collect browsing history, read cookies, or send page content elsewhere. The extension uses no background script.
 - **WebAssembly** runs the bundled Rust matcher. Its only fetch loads the packaged `core.wasm` file from the extension itself.
 
-This privacy description covers Rust Snips, not the websites or browser in which you use it. A website can receive text entered into its own fields, including an expanded snippet.
+This privacy description covers Taplet, not the websites or browser in which you use it. A website can receive text entered into its own fields, including an expanded snippet.
 
 Mozilla signing and GitHub distribution are separate from normal runtime behavior. Submitting a release for signing sends the extension package and requested build sources to Mozilla. Publishing this repository makes its source and bundled example snippets public. Neither process requires uploading your saved snippet library.

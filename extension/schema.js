@@ -1,7 +1,7 @@
 globalThis.RustSnipsSchema = (() => {
   function validate(value) {
     if (!value || value.version !== 1 || !Array.isArray(value.snippets))
-      throw Error("Choose a Rust Snips JSON backup (version 1).");
+      throw Error("Choose a Taplet JSON backup (version 1).");
     if (value.snippets.length > 200) throw Error("The limit is 200 snippets.");
     const keys = new Set(),
       ids = new Set();

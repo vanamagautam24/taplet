@@ -36,11 +36,10 @@ for (const file of ["defaults.js", "schema.js", "engine.js"])
 (async () => {
   const schema = sandbox.RustSnipsSchema;
   const defaults = await schema.load();
-  assert.equal(defaults.snippets[0].shortcut, "/nba");
-  assert(
-    defaults.snippets[0].body.includes("absolutely zero background knowledge"),
-  );
-  assert(defaults.snippets[0].body.includes("Never condescending"));
+  assert.equal(defaults.snippets[0].shortcut, "/hello");
+  assert.equal(defaults.snippets.length, 1);
+  assert(defaults.snippets[0].body.startsWith("Hello!"));
+  assert(defaults.snippets[0].body.length < 100);
   assert.throws(
     () =>
       schema.validate({
@@ -60,14 +59,14 @@ for (const file of ["defaults.js", "schema.js", "engine.js"])
   await schema.save({ ...defaults, enabled: false });
   assert.equal((await schema.load()).enabled, false);
   const engine = new sandbox.RustSnipsEngine();
-  engine.configure(["/nba", "/你好"]);
+  engine.configure(["/sample", "/你好"]);
   await engine.ready();
-  assert.equal(engine.find("/nba"), 0);
-  assert.equal(engine.find("hello /nba"), 0);
-  assert.equal(engine.find("https://nba"), -1);
+  assert.equal(engine.find("/sample"), 0);
+  assert.equal(engine.find("hello /sample"), 0);
+  assert.equal(engine.find("https://sample"), -1);
   assert.equal(engine.find("🙂 /你好"), 1);
-  assert.equal(engine.find("/nb"), -1);
-  assert.equal(engine.find("/NBA"), -1);
+  assert.equal(engine.find("/sam"), -1);
+  assert.equal(engine.find("/SAMPLE"), -1);
   const scratch = new Uint8Array(
     engine.exports.memory.buffer,
     engine.buffer,
@@ -79,7 +78,7 @@ for (const file of ["defaults.js", "schema.js", "engine.js"])
   );
   for (let i = 0; i < 200; i++) {
     engine.configure([]);
-    assert.equal(engine.find("/nba"), -1);
+    assert.equal(engine.find("/sample"), -1);
     engine.configure(["/new"]);
     assert.equal(engine.find("/new"), 0);
   }

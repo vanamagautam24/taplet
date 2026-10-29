@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Rust Snips · Shortcut studio 0.2.1</title>
+    <title>Taplet · Shortcut studio 0.3.0</title>
     <link rel="icon" href="icon.svg" />
-    <link rel="stylesheet" href="ui.css?v=0.2.1" />
+    <link rel="stylesheet" href="ui.css?v=0.3.0" />
   </head>
   <body class="studio-page">
     <svg
@@ -47,9 +47,9 @@
     </svg>
     <div class="app">
       <aside class="sidebar" data-rust-snips="off">
-        <a class="brand" href="options.html?studio=0.2.1"
+        <a class="brand" href="options.html?studio=0.3.0"
           ><img src="icon.svg" alt="" /><span
-            >RUST SNIPS<small>YOUR SHORTCUT STUDIO</small></span
+          >TAPLET<small>YOUR SHORTCUT STUDIO</small></span
           ></a
         >
         <div class="library-head">
@@ -124,83 +124,115 @@
               >
             </div>
             <div id="board" class="board">
-              <svg
-                class="board-wires"
-                viewBox="0 0 700 600"
-                preserveAspectRatio="xMidYMid meet"
-                aria-hidden="true"
+              <div
+                id="scene-model"
+                class="scene-model"
+                tabindex="0"
+                role="group"
+                aria-label="Interactive shortcut model. Drag or use arrow keys to rotate. Use plus and minus controls to zoom."
               >
-                <path
-                  class="trace muted-trace"
-                  d="M60 90h95l40 40h100m345 400h-75l-40-40H315M60 480v-55l40-40M640 100v70l-35 35"
-                />
-                <path class="signal signal-one" d="M237 237v50q0 20 20 20h69" />
-                <path class="signal signal-two" d="M389 307h67q20 0 20 20v40" />
-                <circle class="socket" cx="237" cy="237" r="5" />
-                <circle class="socket" cx="326" cy="307" r="5" />
-                <circle class="socket" cx="389" cy="307" r="5" />
-                <circle class="socket" cx="476" cy="367" r="5" />
-                <path
-                  class="trace"
-                  d="M25 35h120l25 25h170l25-25h310v70M675 510v65H490l-25-25H200l-25 25H25v-80"
-                />
-                <circle class="socket decorative" cx="25" cy="495" r="4" />
-                <circle class="socket decorative" cx="675" cy="105" r="4" />
-              </svg>
-              <button
-                id="trigger-focus"
-                class="callout trigger-callout"
-                data-rust-snips="off"
-              >
-                <span class="step-number">01</span
-                ><span
-                  ><strong>THE SHORTCUT</strong
-                  ><small
-                    >A few keys you choose.<br />Click to edit the
-                    trigger.</small
-                  ></span
-                ><svg class="icon"><use href="#i-arrow" /></svg>
-              </button>
-              <button
-                id="keycap"
-                class="keycap"
-                title="Edit this shortcut"
-                aria-label="Edit shortcut"
-              >
-                <span id="board-shortcut">/nba</span><small>YOUR TRIGGER</small>
-              </button>
-              <button
-                id="engine-focus"
-                class="engine-chip"
-                title="Try the shortcut"
-              >
-                <span class="chip-led"></span><span>RUST</span
-                ><small>SNIP ENGINE</small>
-              </button>
-              <button
-                id="text-focus"
-                class="callout text-callout"
-                data-rust-snips="off"
-              >
-                <span class="step-number">02</span
-                ><span
-                  ><strong>YOUR FULL THOUGHT</strong
-                  ><small
-                    >Saved words, ready to go.<br />Click to edit the
-                    expansion.</small
-                  ></span
-                ><svg class="icon"><use href="#i-arrow" /></svg>
-              </button>
-              <div class="output-card" data-rust-snips="off">
-                <div class="output-title">
-                  <span id="board-name">Explain from scratch</span
-                  ><span class="output-dots">•••</span>
+                <svg
+                  class="board-wires"
+                  viewBox="0 0 700 600"
+                  preserveAspectRatio="xMidYMid meet"
+                  aria-hidden="true"
+                >
+                  <path
+                    class="trace muted-trace"
+                    d="M60 90h95l40 40h100m345 400h-75l-40-40H315M60 480v-55l40-40M640 100v70l-35 35"
+                  />
+                  <path
+                    class="signal signal-one"
+                    d="M237 237v50q0 20 20 20h69"
+                  />
+                  <path
+                    class="signal signal-two"
+                    d="M389 307h67q20 0 20 20v40"
+                  />
+                  <circle class="socket" cx="237" cy="237" r="5" />
+                  <circle class="socket" cx="326" cy="307" r="5" />
+                  <circle class="socket" cx="389" cy="307" r="5" />
+                  <circle class="socket" cx="476" cy="367" r="5" />
+                  <path
+                    class="trace"
+                    d="M25 35h120l25 25h170l25-25h310v70M675 510v65H490l-25-25H200l-25 25H25v-80"
+                  />
+                  <circle class="socket decorative" cx="25" cy="495" r="4" />
+                  <circle class="socket decorative" cx="675" cy="105" r="4" />
+                </svg>
+                <button
+                  id="trigger-focus"
+                  class="callout trigger-callout"
+                  data-rust-snips="off"
+                >
+                  <span class="step-number">01</span
+                  ><span
+                    ><strong>THE SHORTCUT</strong
+                    ><small
+                      >A few keys you choose.<br />Click to edit the
+                      trigger.</small
+                    ></span
+                  ><svg class="icon"><use href="#i-arrow" /></svg>
+                </button>
+                <button
+                  id="keycap"
+                  class="keycap"
+                  title="Press to run this shortcut on the model"
+                  aria-label="Run shortcut on the model"
+                >
+                  <span id="board-shortcut">/hello</span
+                  ><small>YOUR TRIGGER</small>
+                </button>
+                <button
+                  id="engine-focus"
+                  class="engine-chip"
+                  title="Try the shortcut"
+                >
+                  <span class="chip-led"></span><span>RUST</span
+                  ><small>SNIP ENGINE</small>
+                </button>
+                <button
+                  id="text-focus"
+                  class="callout text-callout"
+                  data-rust-snips="off"
+                >
+                  <span class="step-number">02</span
+                  ><span
+                    ><strong>YOUR FULL THOUGHT</strong
+                    ><small
+                      >Saved words, ready to go.<br />Click to edit the
+                      expansion.</small
+                    ></span
+                  ><svg class="icon"><use href="#i-arrow" /></svg>
+                </button>
+                <div
+                  id="model-output"
+                  class="output-card"
+                  data-rust-snips="off"
+                  role="button"
+                  tabindex="0"
+                  aria-label="Open full expansion preview"
+                >
+                  <div class="output-title">
+                    <span id="board-name">A quick hello</span
+                    ><span class="output-dots">•••</span>
+                  </div>
+                  <p id="board-preview"></p>
+                  <div class="output-meta">
+                    <span id="preview-length"></span
+                    ><span class="preview-label">LIVE PREVIEW</span>
+                  </div>
                 </div>
-                <p id="board-preview"></p>
-                <div class="output-meta">
-                  <span id="preview-length"></span
-                  ><span class="preview-label">LIVE PREVIEW</span>
-                </div>
+              </div>
+            </div>
+            <div class="scene-controls" aria-label="Model view controls">
+              <span>Drag to rotate · Press the key to expand</span>
+              <div>
+                <button id="scene-zoom-out" aria-label="Zoom model out">
+                  −</button
+                ><span id="scene-zoom-value" aria-live="polite">100%</span
+                ><button id="scene-zoom-in" aria-label="Zoom model in">+</button
+                ><button id="scene-reset">Reset view</button>
               </div>
             </div>
             <div class="board-caption">
@@ -232,11 +264,11 @@
                 ><span>Pick a starter, make it yours.</span>
               </div>
               <div class="starters">
-                <button class="starter" data-template="explain">
+                <button class="starter" data-template="hello">
                   <span class="starter-symbol">Aa</span
                   ><span
-                    ><strong>Explain anything</strong
-                    ><small>Learn from scratch</small></span
+                    ><strong>A quick hello</strong
+                    ><small>A friendly greeting</small></span
                   ><span>↗</span></button
                 ><button class="starter" data-template="thanks">
                   <span class="starter-symbol">↗</span
@@ -325,7 +357,7 @@
                 <button id="clear-practice" class="text-button">Clear</button>
               </div>
               <p id="practice-hint">
-                Type /nba below to try your explanation prompt.
+                Type /hello below to try a friendly greeting.
               </p>
               <textarea
                 id="practice"
@@ -351,7 +383,7 @@
         </div>
         <footer>
           <span
-            >Rust Snips 0.2.1 · Made for the little things you type a lot.</span
+            >Taplet 0.3.0 · Made for the little things you type a lot.</span
           ><span id="status" role="status" aria-live="polite"></span>
         </footer>
       </main>
@@ -390,10 +422,11 @@
         </button>
       </div>
     </dialog>
-    <script src="defaults.js?v=0.2.1"></script>
-    <script src="schema.js?v=0.2.1"></script>
-    <script src="engine.js?v=0.2.1"></script>
-    <script src="content.js?v=0.2.1"></script>
-    <script src="options.js?v=0.2.1"></script>
+    <script src="defaults.js?v=0.3.0"></script>
+    <script src="schema.js?v=0.3.0"></script>
+    <script src="engine.js?v=0.3.0"></script>
+    <script src="content.js?v=0.3.0"></script>
+    <script src="scene.js?v=0.3.0"></script>
+    <script src="options.js?v=0.3.0"></script>
   </body>
 </html>

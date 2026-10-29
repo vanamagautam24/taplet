@@ -59,7 +59,7 @@
       .then(() => engine.ready())
       .catch(() => {
         console.warn(
-          "Rust Snips: the local engine could not start. Reload the extension to retry.",
+          "Taplet: the local engine could not start. Reload the extension to retry.",
         );
         return null;
       });
